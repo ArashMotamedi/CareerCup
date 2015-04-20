@@ -1,2 +1,2 @@
 # CareerCup
-My solutions to problems from the CareerCup book, Cracking the Coding Interview, by Gayle Laakmann McDowell
+My C# solutions to problems from the CareerCup book, Cracking the Coding Interview, by Gayle Laakmann McDowell.
