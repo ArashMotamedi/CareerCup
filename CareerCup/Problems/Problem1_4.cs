@@ -31,32 +31,33 @@ namespace CareerCup.Problems
 
 			// Convert to char array
 			var chars1 = strs[0].ToCharArray();
-			var chars2 = strs[1].ToCharArray();
-			
+			var chars2 = strs[1].ToCharArray();			
 			bool areAnagrams = true;
+
 			// Keep count of every character per string, exclude space
-			int[] charCount1 = new int[256];
-			int[] charCount2 = new int[256];
+			int[] charCount = new int[256];
 
 			//TODO: Try to combine the for loops below
+			// Depends on whether different number of spaces are allowed per string
+			// Add number of characters from the first string
 			for (int i = 0; i < chars1.Length; i++)
 			{
 				var c = chars1[i];
 				if (c != ' ')
-					charCount1[c]++;
+					charCount[c]++;
 			}
 
+			// Remove character count from the second string
 			for (int i = 0; i < chars2.Length; i++)
 			{
 				var c = chars2[i];
 				if (c != ' ')
-					charCount2[c]++;
+					charCount[c]--;
 			}
 
-			// Now compare if we have equal number of every character in both strings
-			// if (!chars1.SequenceEqual(chars2)) areAnagrams = false;
+			// Make sure all characters have been canceled out
 			for (int i = 0; i < 256; i++)
-				if (charCount1[i] != charCount2[i])
+				if (charCount[i] != 0)
 				{
 					areAnagrams = false;
 					break;
