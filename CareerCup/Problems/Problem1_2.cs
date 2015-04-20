@@ -27,15 +27,10 @@ namespace CareerCup.Problems
 		public void Run(string args)
 		{
 			if (string.IsNullOrEmpty(args))
-			{
-				Console.WriteLine("Null or empty string");
-				return;
-			}
+				throw new ArgumentException("Input string can't be null or empty");
 
-			if (args.Last() != '\0') {
-				Console.WriteLine("Not a C-String. Last character must be \\0");
-				return;
-			}
+			if (args.Last() != '\0')
+				throw new ArgumentException("Input must end in \\0 to be a C string");
 
 			var inputChars = args.ToCharArray();
 			foreach (var c in inputChars)

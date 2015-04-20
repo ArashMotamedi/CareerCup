@@ -72,20 +72,15 @@ namespace CareerCup
 					// Execute problem iterations
 					foreach (var iargs in iterationArgs)
 					{
-						// Prepare for execution
-						Console.ResetColor();
-
 						// Confirm args back to the user
 						if (!string.IsNullOrEmpty(iargs))
 						{
-							Console.Write("Running with: ");
 							Console.ForegroundColor = ConsoleColor.Yellow;
 							Console.WriteLine(iargs);
-							Console.ResetColor();
 						}
 
 						// Run
-						Console.WriteLine();
+						Console.ResetColor();
 						problem.Run(iargs);
 						Console.ResetColor();
 						Console.WriteLine();
