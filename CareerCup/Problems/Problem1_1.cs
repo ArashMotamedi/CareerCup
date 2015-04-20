@@ -13,33 +13,37 @@ namespace CareerCup.Problems
 			return "1.1";
 		}
 
-		public string DefaultArgs()
+		public string[] TestArgs()
 		{
-			return "Are there only unique characters in this string? (the answer is no)";
+			return new string[] {
+				"Is this all unique character? The answer is no",
+				"Unique? Yah"
+			};
 		}
 	
 		public string Statement() { return "Is string all unique characters? Solve without additional DS."; }
 
 		public void Run(string args) {
 			var allUnique = true;
-			var chars = new HashSet<char>();
+			var chars = new bool[256];
+
 			foreach (var c in args.ToCharArray())
 			{
-				if (chars.Contains(c))
+				if (chars[c])
 				{
 					allUnique = false;
 					break;
 				}
-				chars.Add(c);
+				chars[c] = true;
 			}
 
 			if (allUnique)
 			{
-				Console.WriteLine("All unique characters");
+				Console.WriteLine("Yes! All unique.");
 			}
 			else
 			{
-				Console.WriteLine("Repeated character found");
+				Console.WriteLine("No! Repeated characters.");
 			}
 		}
 	}

@@ -14,9 +14,9 @@ namespace CareerCup.Problems
 			return "1.2";
 		}
 
-		public string DefaultArgs()
+		public string[] TestArgs()
 		{
-			return "invert this\0";
+			return new string[] { "invert this\0" };
 		}
 
 		public string Statement()

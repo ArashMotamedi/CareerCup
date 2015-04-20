@@ -56,21 +56,40 @@ namespace CareerCup
 					Console.ForegroundColor = ConsoleColor.Green;
 					Console.WriteLine(problem.Statement());
 
-					// If user didn't specify args, get the default args
-					if (string.IsNullOrEmpty(problemArgs))
-						problemArgs = problem.DefaultArgs();
+					// Problem can be run with a single or multiple iterations
+					string[] iterationArgs = null;
 
-					// Confirm args back to the user
+					// If user provided args, it's a single iteration
 					if (!string.IsNullOrEmpty(problemArgs))
+						iterationArgs = new string[1] { problemArgs };
+					else
 					{
-						Console.ForegroundColor = ConsoleColor.Yellow;
-						Console.WriteLine(problemArgs);
+						iterationArgs = problem.TestArgs();
+						if (iterationArgs == null || iterationArgs.Length == 0)
+							iterationArgs = new string[] { null };
 					}
 
-					// Run
-					Console.ResetColor();
-					Console.WriteLine();
-					problem.Run(problemArgs);
+					// Execute problem iterations
+					foreach (var iargs in iterationArgs)
+					{
+						// Prepare for execution
+						Console.ResetColor();
+
+						// Confirm args back to the user
+						if (!string.IsNullOrEmpty(iargs))
+						{
+							Console.Write("Running with: ");
+							Console.ForegroundColor = ConsoleColor.Yellow;
+							Console.WriteLine(iargs);
+							Console.ResetColor();
+						}
+
+						// Run
+						Console.WriteLine();
+						problem.Run(iargs);
+						Console.ResetColor();
+						Console.WriteLine();
+					}
 				}
 				catch (Exception ex)
 				{

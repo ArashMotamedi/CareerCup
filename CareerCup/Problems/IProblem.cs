@@ -12,7 +12,7 @@ namespace CareerCup.Problems
 
 		string Statement();
 
-		string DefaultArgs();
+		string[] TestArgs();
 
 		void Run(string args);
 	}

@@ -18,9 +18,9 @@ namespace CareerCup.Problems
 			return "Remove duplicate characters from a string without any additional buffer.";
 		}
 
-		public string DefaultArgs()
+		public string[] TestArgs()
 		{
-			return "Remove duplicates from this string. Should result in: Remov duplicatsfrhn.S";
+			return new string[] {"Remove duplicates. Remov duplicats."};
 		}
 
 		public void Run(string args)
