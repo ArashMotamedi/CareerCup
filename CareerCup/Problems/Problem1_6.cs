@@ -49,22 +49,25 @@ namespace CareerCup.Problems
 			int width = image.Length;
 			for (int row = 0; row < width / 2; row++)
 			{
-				for (int col = row; col < width - 1 - (row * 2); col++)
+				int last = width - 1 - row;
+				for (int col = row; col < last; col++)
 				{
-					// Remember 4 pixels
-					// TODO, probably don't need as many temps
-					int tmp = image[row][col];
-					image[row][col] = image[col][row];
-					image[col][row] = tmp;
+					// Rotate 4 corners
+					
+					// Corner 1
+					int tmp = image[col][last];
+					image[col][last] = image[row][col];
 
-					tmp = image[row][col];
-					image[row][col] = image[width - 1 - row][width - 1 - col];
-					image[width - 1 - row][width - 1 - col] = tmp;
+					// Corner 2
+					int tmp2 = image[last][last - col];
+					image[last][last - col] = tmp;
 
-					tmp = image[row][col];
+					// Corner 3
+					tmp = image[last - col][row];
+					image[last - col][row] = tmp2;
 
-
-
+					// Corner 4
+					image[row][col] = tmp;
 				}
 			}
 
