@@ -46,10 +46,9 @@ namespace CareerCup.Problems
 			var image = JsonConvert.DeserializeObject<int[][]>(args);
 			printImage(image);
 
-			int width = image.Length;
-			for (int row = 0; row < width / 2; row++)
+			int last = image.Length - 1;
+			for (int row = 0; row < last; row++)
 			{
-				int last = width - 1 - row;
 				for (int col = row; col < last; col++)
 				{
 					// Rotate 4 corners
@@ -59,16 +58,18 @@ namespace CareerCup.Problems
 					image[col][last] = image[row][col];
 
 					// Corner 2
-					int tmp2 = image[last][last - col];
-					image[last][last - col] = tmp;
+					int tmp2 = image[last][last - col + row];
+					image[last][last - col + row] = tmp;
 
 					// Corner 3
-					tmp = image[last - col][row];
-					image[last - col][row] = tmp2;
+					tmp = image[last - col + row][row];
+					image[last - col + row][row] = tmp2;
 
 					// Corner 4
 					image[row][col] = tmp;
 				}
+
+				last--;
 			}
 
 			Console.WriteLine("Rotated:");
