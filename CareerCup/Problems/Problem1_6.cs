@@ -44,7 +44,7 @@ namespace CareerCup.Problems
 		public void Run(string args)
 		{
 			var image = JsonConvert.DeserializeObject<int[][]>(args);
-			printImage(image);
+			Util.PrintMatrix(image);
 
 			int last = image.Length - 1;
 			for (int row = 0; row < last; row++)
@@ -73,19 +73,7 @@ namespace CareerCup.Problems
 			}
 
 			Console.WriteLine("Rotated:");
-			printImage(image);
-		}
-
-		private void printImage(int[][] image)
-		{
-			for (int row = 0; row < image.Length; row++)
-			{
-				for (int col = 0; col < image[row].Length; col++)
-				{
-					Console.Write(image[row][col] + " ");
-				}
-				Console.WriteLine();
-			}
+			Util.PrintMatrix(image);
 		}
 	}
 }
