@@ -55,6 +55,8 @@
     <Compile Include="Problems\Problem1_8.cs" />
     <Compile Include="Problems\Problem2_1.cs" />
     <Compile Include="Problems\Problem2_2.cs" />
+    <Compile Include="Problems\Problem2_3.cs" />
+    <Compile Include="Problems\Problem2_4.cs" />
     <Compile Include="Problems\Util.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
