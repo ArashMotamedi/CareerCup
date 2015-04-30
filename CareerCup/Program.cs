@@ -20,7 +20,8 @@ namespace CareerCup
 				IProblem[] problems = Assembly.GetExecutingAssembly().GetTypes()
 					.Where(t => !t.IsInterface && typeof(IProblem).IsAssignableFrom(t))
 					.Select(t => (IProblem)Activator.CreateInstance(t))
-					.OrderBy(t => { int i = 1; return t.Id().Split(new char[] { '.' }).Sum(e => Convert.ToInt16(e) * (100 ^ i--)); })
+					//.OrderBy(t => { int i = 1; return t.Id().Split(new char[] { '.' }).Sum(e => Convert.ToInt16(e) * (100 ^ i++)); })
+					.OrderBy(t => t.Id())
 					.ToArray();
 
 				// Print them
@@ -72,18 +73,30 @@ namespace CareerCup
 					// Execute problem iterations
 					foreach (var iargs in iterationArgs)
 					{
-						// Confirm args back to the user
-						if (!string.IsNullOrEmpty(iargs))
-						{
-							Console.ForegroundColor = ConsoleColor.Yellow;
-							Console.WriteLine(iargs);
-						}
 
-						// Run
-						Console.ResetColor();
-						problem.Run(iargs);
-						Console.ResetColor();
-						Console.WriteLine();
+						try
+						{
+							// Confirm args back to the user
+							if (!string.IsNullOrEmpty(iargs))
+							{
+								Console.ForegroundColor = ConsoleColor.Yellow;
+								Console.WriteLine(iargs);
+							}
+
+							// Run
+							Console.ResetColor();
+							problem.Run(iargs);
+							Console.ResetColor();
+							Console.WriteLine();
+						}
+						catch (Exception ex)
+						{
+							// In case of errors
+							Console.ForegroundColor = ConsoleColor.Red;
+							Console.WriteLine(ex.Message);
+							Console.ResetColor();
+							Console.WriteLine();
+						}
 					}
 				}
 				catch (Exception ex)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CareerCup.Types.SinglyLinkedList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,18 @@ namespace CareerCup.Problems
 				Console.WriteLine();
 			}
 		}
+
+		public static void PrintList(Node head)
+		{
+			var node = head;
+			while (node != null)
+			{
+				Console.Write(node.Value + " => ");
+				node = node.Next;
+			}
+			Console.WriteLine("NULL");
+		}
+
 
 	}
 }
